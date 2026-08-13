@@ -1,7 +1,4 @@
-let users = [
-  { id: 1, name: "Ada Lovelace", email: "ada@example.com" },
-  { id: 2, name: "Alan Turing", email: "alan@example.com" },
-];
+import { users } from "../../lib/users-store";
 
 export default function handler(req, res) {
   if (req.method === "GET") {

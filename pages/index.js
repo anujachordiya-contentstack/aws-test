@@ -1,13 +1,10 @@
 import { useState } from "react";
+import { users } from "../lib/users-store";
 
-export async function getServerSideProps({ req }) {
-  const protocol = req.headers["x-forwarded-proto"] || "http";
-  const res = await fetch(`${protocol}://${req.headers.host}/api/users`);
-  const data = await res.json();
-
+export async function getServerSideProps() {
   return {
     props: {
-      users: data.users || [],
+      users,
     },
   };
 }
