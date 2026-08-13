@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export async function getServerSideProps() {
-  const protocol = "http";
-  const res = await fetch(`${protocol}://localhost:3000/api/users`);
+export async function getServerSideProps({ req }) {
+  const protocol = req.headers["x-forwarded-proto"] || "http";
+  const res = await fetch(`${protocol}://${req.headers.host}/api/users`);
   const data = await res.json();
 
   return {
